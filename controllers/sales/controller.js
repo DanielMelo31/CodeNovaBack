@@ -34,4 +34,11 @@ const editSale = async (editObject, callback) => {
 		callback
 	);
 };
-export { allSalesQueries, newSale, editSale };
+
+const deleteSale = async (deleteObject, callback) => {
+	const saleFilter = { _id: new ObjectId(deleteObject) };
+	const database = getDB();
+
+	await database.collection('sales').deleteOne(saleFilter, callback);
+};
+export { allSalesQueries, newSale, editSale, deleteSale };
