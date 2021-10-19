@@ -13,12 +13,10 @@ const newSale = async (saleData, callback) => {
 
 	await connection.collection('sales').insertOne(saleData, callback);
 };
-
-const editSale = async (editObject, callback) => {
+const editSale = async (ObjectID, editObject, callback) => {
 	console.log(editObject);
 
-	const saleFilter = { _id: new ObjectId(editObject.id) };
-	delete editObject.id;
+	const saleFilter = { _id: new ObjectId(ObjectID) };
 	const operation = {
 		$set: editObject,
 	};

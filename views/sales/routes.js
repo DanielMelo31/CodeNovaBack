@@ -24,15 +24,15 @@ salesRoutes.route('/sales').get((req, res) => {
 	allSalesQueries(genericCallback(res));
 });
 
-salesRoutes.route('/sales/update').patch((req, res) => {
-	editSale(req.body, genericCallback(res));
-});
-
-salesRoutes.route('/sales/new').post((req, res) => {
+salesRoutes.route('/sales').post((req, res) => {
 	newSale(req.body, genericCallback(res));
 });
 
-salesRoutes.route('/sales/delete').delete((req, res) => {
-	deleteSale(req.body.id, genericCallback(res));
+salesRoutes.route('/sales/:id').patch((req, res) => {
+	editSale(req.params.id,req.body, genericCallback(res));
+});
+
+salesRoutes.route('/sales/:id').delete((req, res) => {
+	deleteSale(req.params.id, genericCallback(res));
 });
 export default salesRoutes;
